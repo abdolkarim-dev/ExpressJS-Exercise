@@ -16,6 +16,16 @@ app.get("/courses/:id", (req, res) => {
   res.send(cours);
 });
 
+app.put("/courses/:id", (req, res) => {
+  res.status(200).send("put method");
+});
+app.post("/courses/", (req, res) => {
+  res.status(200).send("post method");
+});
+app.delete("/courses/:id", (req, res) => {
+  res.statusCode = 401;
+  res.send("delete method");
+});
 app.listen(3000, () => {
   console.log("start port 3000 server for express js");
 });
