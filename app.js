@@ -2,10 +2,20 @@ const express = require("express");
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("hello");
+const courses = [
+  { id: 1, title: "nodejs", price: 4_000_00 },
+  { id: 2, title: "Reactjs", price: 5_000_00 },
+  { id: 3, title: "Expressjs", price: 3_000_00 },
+  { id: 4, title: "js", price: 1_000_00 },
+];
+
+app.get("/courses/:id", (req, res) => {
+  const cours = courses.find((cors) => {
+    return cors.id === Number(req.params.id);
+  });
+  res.send(cours);
 });
 
 app.listen(3000, () => {
-  console.log("start server for express js");
+  console.log("start port 3000 server for express js");
 });
