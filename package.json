@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/abdolkarim-dev/ExpressJS-Exercise#readme",
   "dependencies": {
-    "express": "^5.3.0"
+    "express": "^5.3.0",
+    "mongoose": "^9.12.0"
   }
 }
