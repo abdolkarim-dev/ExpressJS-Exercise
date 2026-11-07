@@ -1,6 +1,9 @@
 const express = require("express");
 
 const app = express();
+app.use(express.json())
+app.use(express.urlencoded())
+
 
 const courses = [
   { id: 1, title: "nodejs", price: 4_000_00 },
@@ -20,6 +23,8 @@ app.put("/courses/:id", (req, res) => {
   res.status(200).send("put method");
 });
 app.post("/courses/", (req, res) => {
+  console.log(req.body);
+  
   res.status(200).send("post method");
 });
 app.delete("/courses/:id", (req, res) => {
