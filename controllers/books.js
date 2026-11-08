@@ -1,4 +1,4 @@
-const validatorBook = require("../validation/book");
+const validatorBook = require("../validation/books");
 const { isValidObjectId } = require("mongoose");
 const booksModle = require("../models/books");
 
