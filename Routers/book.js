@@ -7,6 +7,9 @@ bookRouter
   .post(bookController.addBook)
   .get(bookController.getAllBooks);
 
-bookRouter.delete("/:id", bookController.removeBook);
+bookRouter
+  .route("/:id")
+  .delete(bookController.removeBook)
+  .get(bookController.getOneBook);
 
 module.exports = bookRouter;

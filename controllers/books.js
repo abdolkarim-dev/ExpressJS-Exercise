@@ -40,3 +40,25 @@ exports.getAllBooks = async (req, res) => {
   const books = await booksModle.find({}).lean();
   res.json(books);
 };
+
+exports.getOneBook = async (req, res) => {
+  const { id } = req.params;
+
+  let getOneBook = null;
+
+  if (isValidObjectId(id)) {
+    getOneBook = await booksModle.findOne({ _id: id });
+
+    if (!getOneBook) {
+      return res.status(404).json({
+        message: "book not found",
+      });
+    }
+  } else {
+    return res.status(404).json({
+      message: "BookID is not fund",
+    });
+  }
+
+  res.send(getOneBook);
+};
