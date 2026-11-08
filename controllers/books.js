@@ -1,6 +1,6 @@
-const validatorBook = require("../validation/book"); 
+const validatorBook = require("../validation/book");
 const { isValidObjectId } = require("mongoose");
-const booksModle = require("../models/books"); 
+const booksModle = require("../models/books");
 
 exports.addBook = async (req, res) => {
   const validation = validatorBook(req.body);
@@ -34,4 +34,9 @@ exports.removeBook = async (req, res) => {
       message: "BookID is not fund",
     });
   }
+};
+
+exports.getAllBooks = async (req, res) => {
+  const books = await booksModle.find({}).lean();
+  res.json(books);
 };
