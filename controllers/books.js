@@ -47,6 +47,8 @@ exports.getOneBook = async (req, res) => {
   let getOneBook = null;
 
   if (isValidObjectId(id)) {
+    // getOneBook = await booksModle.findOne({ _id: id } ,"-free");
+    // getOneBook = await booksModle.findOne({ _id: id }).select("name free");
     getOneBook = await booksModle.findOne({ _id: id });
 
     if (!getOneBook) {
