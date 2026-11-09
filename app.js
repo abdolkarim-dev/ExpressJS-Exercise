@@ -1,16 +1,12 @@
 const express = require("express");
 require("./configs/db");
 const bookRouter = require("./Routers/books");
-const userRouter = require("./Routers/users");
-const { testMiddleware } = require("./middleware/test");
+const userRouter = require("./Routers/users"); 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded());
-
-app.use(testMiddleware);
  
-
 app.use("/api/book", bookRouter);
 app.use("/api/user", userRouter);
 
