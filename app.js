@@ -5,22 +5,22 @@ const bookRouter = require("./Routers/books");
 const userRouter = require("./Routers/users");
 const path = require("path");
 const app = express();
-
+const viewsPath = require("./utils/viewPath");
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(morgan("combined"));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "views", "index.html"));
+  res.sendFile(path.join(viewsPath, "index.html"));
 });
 
 app.get("/about", (req, res) => {
-  res.sendFile(path.join(__dirname, "views", "about.html"));
+  res.sendFile(path.join(viewsPath, "about.html"));
 });
 
 app.get("/contact", (req, res) => {
-  res.sendFile(path.join(__dirname, "views", "contact.html"));
+  res.sendFile(path.join(viewsPath, "contact.html"));
 });
 
 app.use("/api/book", bookRouter);
