@@ -12,14 +12,20 @@ app.use(express.urlencoded());
 app.use(morgan("combined"));
 app.use(express.static(path.join(__dirname, "public")));
 
-
-const teacherModel = require('./models/teachers')
-const courcesModel = require('./models/courses')
-
-
+const teacherModel = require("./models/teachers");
+const courcesModel = require("./models/courses");
+const coursesRouter = require("./Routers/courses");
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(viewsPath, "index.html"));
+  // res.sendFile(path.join(viewsPath, "index.html"));
+
+  courcesModel.create({
+    title: "expres ",
+    teacher: "6b07d27d0bb8c8533ffbfc81",
+  });
+  res.json({
+    message: "New Course added",
+  });
 });
 
 app.get("/about", (req, res) => {
@@ -32,10 +38,10 @@ app.get("/contact", (req, res) => {
 
 app.use("/api/book", bookRouter);
 app.use("/api/user", userRouter);
+app.use("/api/course", coursesRouter);
 
- app.use((req, res, next) => {
-
-  return res.sendFile(path.join(viewsPath,'404.html'))
+app.use((req, res, next) => {
+  return res.sendFile(path.join(viewsPath, "404.html"));
 
   // res.status(404).json({
   //   error: {
