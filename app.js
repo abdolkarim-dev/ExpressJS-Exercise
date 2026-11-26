@@ -12,6 +12,12 @@ app.use(express.urlencoded());
 app.use(morgan("combined"));
 app.use(express.static(path.join(__dirname, "public")));
 
+
+const teacherModel = require('./models/teachers')
+const courcesModel = require('./models/courses')
+
+
+
 app.get("/", (req, res) => {
   res.sendFile(path.join(viewsPath, "index.html"));
 });
@@ -38,6 +44,7 @@ app.use("/api/user", userRouter);
   //   },
   // });
 });
+
 app.listen(3000, () => {
   console.log("start port 3000 server for express js");
 });
